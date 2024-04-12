@@ -54,47 +54,55 @@
 Understanding the liquid crystal phase of DNA is of paramount significance for unraveling the enigma of origins of life
 on earth. Understanding the self-assembly of DNA mono-nucleotides not only could shed light on the genesis of 
 supra-molecular structures crucial for genetic information transfer and memory in life, but also could help the 
-development/validation of theories on the emergence of life itself\cite{Jia}. 
+development/validation of theories on the emergence of life itself~\cite{Jia}. 
 For example it has been argued that  liquid crystal assemblies of nucleic acids may have facilitated the formation 
 of long biopolymers necessary for life. In this context, the study of DNA liquid crystals may provide 
 insights into the fundamental processes behind life emergence.  \\
 
-Recent research has demonstrated a fascinating phenomenon in the behavior of nucleic acid nucleotide triphosphates
+Recent research has demonstrated a fascinating phenomenon in the behavior of nucleic acid mononucleotide triphosphates
 (dNTPs) when subjected to specific conditions: at sufficiently high concentrations and low temperatures in an aqueous
 solution, these molecules undergo a liquid crystalline transition to a columnar phase~\cite{Smith}. 
-%%%% TODO: sono arrivato qui
-These
-DNA strands, with an approximate length of 4 nm, can stack one on top of each other, forming longer strands and thus 
-inducing the formation of the columnar phase. Intriguingly, experimental observations of this behavior 
-have sparked significant interest in constructing computational models aimed at simulating DNA strands to predict system
-behaviours. Several scholarly works, particularly Ref.~\cite{Nguyen,C0JM02355H,Bellini}, have
-introduced coarse-grained models approximating these filaments as hard cylinders and quasi-cylinders, each with two
-attractive patches. While these computer simulations systems reveal the presence of nematic liquid crystalline phases
-under specific combinations of concentration and temperature, experimental investigations utilising dNTPs fail to
-observe these nematic phases. This inconsistency between experimental findings and simulation results prompts the
-pursuit of a resolution. Our study seeks to address this discordance by proposing a novel coarse-grained model capable
-of exhibiting a columnar phase without transitioning into a nematic phase.
+These dNTPs, with an approximate length of 4 nm, can stack one on top of each other, forming longer strands and thus 
+inducing the formation of the columnar phase. These experimental findings calls for 
+the development of computational model able to capture and understand the observed phase behavior.
+In the literature~\cite{Nguyen,C0JM02355H,Bellini} 
+coarse-grained models have been proposed which approximate these filaments as hard cylinders and quasi-cylinders, each with two
+attractive patches. Anyway, these models exhibit a different phase behavior, in that a nematic liquid crystal is also formed
+under suitable concentration and temperature, whereas this phase is not observed for dNTDs.
+This inconsistency between experimental findings and simulations results prompts the
+pursuit of a suitable numerical description of these experiments. 
+The goal of the present work is precisely to develop a coarse-grained mode of dNTPs which fully accounts for the experimental 
+results, which exhibit a transition from an isotropic to a columnar phase without any intermediate nematic phase and which is 
+possible able to reproduce the temperature dependence of the phase boundaries.
 
 \section{\label{sec:level1}Model and simulation details}
 \begin{figure}[h!]
 \includegraphics[width=1\linewidth]{rota.png}
 \caption{\label{fig:rota} Semi-disk, that approximate the single nucleotides, with 4 attractive patches, two for stacking and two for pairing. The staking patches are rotated by $\pi/10$ so that the strand rotates on itself.}
 \end{figure}
-In the domain of computational modeling, our methodology involves simulating individual nucleotides as semi-disks
-featuring four distinct attractive patches. Specifically, a pair of patches is strategically positioned along the cut
-edge of the semi-disks to replicate the base-base pairing phenomenon, while an additional patch is allocated for each
-base of the semi-disk to mimic the stacking behaviour of base pairs. Notably, to encapsulate the characteristic
-rotational dynamics of DNA strands, the stacking patches are programmed to perform a complete rotation every 12 bases,
-rotating them by $\pi/10$ as illustrated in Figure~\ref{fig:rota}. 
+Our approach consists in modeling the dNTPs as semi-disks-like polyhedra 
+featuring four distinct attractive patches. More specifically, two patches are placed along the cut
+edge of the semi-disks to replicate the base-base pairing interaction, while two additional patch are located
+at the center of the two bases of the semi-disk to mimic the stacking attraction between two dNTPs. 
+Notably, to take into account the characteristic twist
+of self-assembled DNA strands, the two stacking patches are 
+placed in such a way that they give rise to their complete revolution
+every 12 bases around the symmetry axis of an self-assembled DNA duplex. 
+This is achieved by rotating the two patches belonging to a single semidisk by $\pi/10$ 
+as shown in Figure~\ref{fig:rota}. 
+% COMMENTO: se parto da una sistema di monomeri i dischi con patch 
 
 
-Given the irregular geometry of semi-disks resulting from the cutting process, a finite number of vertices are utilised
-to approximate these structures as convex polyhedra. Subsequent investigation aimed at assessing the potential
-alteration in the system's physics resulting from this approximation is detailed in the ensuing paragraph. The choice of
-algorithm for computing intersections of convex polyhedra holds significant importance. Following a comprehensive
-evaluation, Xenocollide\cite{libccd} emerges as the optimal solution, offering a favourable compromise between
-computational efficiency and reliability.\\
+Each semidisk is modeled as a polyhedra composed of a finite number of vertices, hence they are not exact semidisks (i.e. 
+obtained by cutting in half a disk). Therefore, in the following we discuss a procedure to estimate the minimal number 
+vertices to use to consider the polyhedra equivalent to exact semidisks. In this respect the goal was to have a polyhedra
+which provides a physical behavior identical to that of exact semidisks. In a Monte Carlo simulation of polyhedra is needed
+to have an algorithm for detecting their overlap. Since the number of vertices is not necessarily small, 
+it was important to employ an efficient algorithm. After having done a comprehensive
+evaluation, we found that the algorithm Xenocollide\cite{libccd} was best option, being both computationally very efficient 
+and robust (i.e.~it is ensured that overlap are not missed).\\
 
+%%%% TODO: sono arrivato qui
 Furthermore, iterative adjustments to the model parameters are undertaken to ensure congruence with experimental data.
 This includes fine-tuning the spatial placement and size of the attractive patches, as well as refining the dimensions
 and rotational dynamics of the stacking patches. These refinements are imperative for achieving concordance between

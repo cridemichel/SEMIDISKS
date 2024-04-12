@@ -2,3 +2,10 @@
 *.log
 *.blg
 *.bbl
+*.swp
+*.tex.swp
+.viminfo
+*.fdb_latexmk
+*.fls
+*.synctex.gz
+Session.vim
