@@ -99,14 +99,12 @@ vertices to use to consider the polyhedra equivalent to exact semidisks. In this
 which provides a physical behavior identical to that of exact semidisks. In a Monte Carlo simulation of polyhedra is needed
 to have an algorithm for detecting their overlap. Since the number of vertices is not necessarily small, 
 it was important to employ an efficient algorithm. After having done a comprehensive
-evaluation, we found that the algorithm Xenocollide\cite{libccd} was best option, being both computationally very efficient 
+evaluation, we found that the algorithm {\it Xenocollide}\cite{libccd} was best option, being both computationally very efficient 
 and robust (i.e.~it is ensured that overlap are not missed).\\
 
-%%%% TODO: sono arrivato qui
-Furthermore, iterative adjustments to the model parameters are undertaken to ensure congruence with experimental data.
-This includes fine-tuning the spatial placement and size of the attractive patches, as well as refining the dimensions
-and rotational dynamics of the stacking patches. These refinements are imperative for achieving concordance between
-simulation outputs and empirical measures such as the persistence length and the length of the DNA filament. 
+We adjusted the model parameters to obtain reasonable values for the persistence and contour length of the self-assemble 
+DNA duplexes. These adjustments include a fine-tune include fine-tune of the spatial placement and size of 
+the attractive patches, as well as a refinement of the geometry and position of the stacking patches. 
 
 \begin{figure}[h!]
 \includegraphics[width=0.7\linewidth]{sosti4.png}
@@ -114,6 +112,7 @@ simulation outputs and empirical measures such as the persistence length and the
 \end{figure}
 
 To expedite simulation processes, the liquid crystalline phases (namely, nematic and columnar) are initially discerned utilising four-patch cylinders. Subsequently, these cylinders are substituted with filamentous semi-disks, and the stability is ascertained through Monte Carlo NVT simulations. The equation of state is subsequently formulated, encompassing isotropic (I), nematic (N), and columnar (C) phases pertinent to four-patch cylinders, as illustrated in Figure 2. The adoption of four-patch cylinders facilitates the seamless integration of 24 semi-disk filaments, ensuring alignment of the final patches and the preservation of intermolecular bonds upon substitution, as shown in Figure \ref{fig:fila}.
+%%%% TODO: sono arrivato qui
 
 \subsection{Polyhedra approximation}
 The polyhedral approximation must be validated to ensure it maintains fidelity to the physics of the simulation.

@@ -15,12 +15,12 @@ else
   set shortmess=aoO
 endif
 badd +81 semidisks.tex
-badd +0 bib_cit.bib
-badd +0 fugitive:///Users/demichel/PAPERS/SEMIDISKS/.git//
+badd +1 bib_cit.bib
+badd +1 fugitive:///Users/demichel/PAPERS/SEMIDISKS/.git//
 argglobal
 %argdel
 set lines=66 columns=134
-winpos 1636 25
+winpos 1630 25
 edit bib_cit.bib
 let s:save_splitbelow = &splitbelow
 let s:save_splitright = &splitright
@@ -41,7 +41,9 @@ set winminheight=0
 set winheight=1
 set winminwidth=0
 set winwidth=1
-wincmd =
+exe '1resize ' . ((&lines * 21 + 33) / 66)
+exe '2resize ' . ((&lines * 20 + 33) / 66)
+exe '3resize ' . ((&lines * 21 + 33) / 66)
 argglobal
 balt semidisks.tex
 setlocal fdm=manual
@@ -54,7 +56,7 @@ setlocal fdn=20
 setlocal nofen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 996 - ((5 * winheight(0) + 6) / 12)
+let s:l = 996 - ((1 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -63,6 +65,7 @@ normal! 018|
 wincmd w
 argglobal
 if bufexists(fnamemodify("semidisks.tex", ":p")) | buffer semidisks.tex | else | edit semidisks.tex | endif
+balt bib_cit.bib
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -73,15 +76,16 @@ setlocal fdn=20
 setlocal nofen
 silent! normal! zE
 let &fdl = &fdl
-let s:l = 52 - ((5 * winheight(0) + 18) / 37)
+let s:l = 114 - ((1 * winheight(0) + 10) / 20)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 52
-normal! 0
+keepjumps 114
+normal! 0867|
 wincmd w
 argglobal
 if bufexists(fnamemodify("fugitive:///Users/demichel/PAPERS/SEMIDISKS/.git//", ":p")) | buffer fugitive:///Users/demichel/PAPERS/SEMIDISKS/.git// | else | edit fugitive:///Users/demichel/PAPERS/SEMIDISKS/.git// | endif
+balt bib_cit.bib
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -90,7 +94,7 @@ setlocal fdl=20
 setlocal fml=1
 setlocal fdn=20
 setlocal nofen
-let s:l = 1 - ((0 * winheight(0) + 6) / 13)
+let s:l = 1 - ((0 * winheight(0) + 10) / 21)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
@@ -98,7 +102,9 @@ keepjumps 1
 normal! 0
 wincmd w
 3wincmd w
-wincmd =
+exe '1resize ' . ((&lines * 21 + 33) / 66)
+exe '2resize ' . ((&lines * 20 + 33) / 66)
+exe '3resize ' . ((&lines * 21 + 33) / 66)
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0
   silent exe 'bwipe ' . s:wipebuf
@@ -113,6 +119,7 @@ if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)
 endif
 let &g:so = s:so_save | let &g:siso = s:siso_save
+nohlsearch
 let g:this_session = v:this_session
 let g:this_obsession = v:this_session
 doautoall SessionLoadPost
