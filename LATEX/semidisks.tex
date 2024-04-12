@@ -21,39 +21,84 @@
 \title{Probing DNA Mono-nucleotide Self-Assembly: A Novel Coarse-Grained Model Exploration}
 \date{\today}
 
+\author{Mattia Trapella}
+%\email[E-mail:]{ mattia.trapella@dottorandi.unipg.com}
+\affiliation{Dipartimento di Fisica e Geologia, Universit\`a di Perugia, Perugia, Italia}
+
 \author{Tommaso Bellini}
-\email[E-mail:]{ tommaso.bellini@unimi.it}
+%\email[E-mail:]{ tommaso.bellini@unimi.it}
 \affiliation{Dipartimento di Biotecnologie Mediche e Medicina Traslazionale, Universit\`a degli studi di Milano, Milano, Italia}
 \author{Cristiano De Michele}
 \email[E-mail:]{ cristiano.demichele@uniroma1.it}
 \affiliation{Dipartimento di Fisica, “Sapienza” Universit\`a di Roma, Roma,Italia}
-\author{Mattia Trapella}
-\email[E-mail:]{ mattia.trapella@dottorandi.unipg.com}
-\affiliation{Dipartimento di Fisica e Geologia, Universit\`a di Perugia, Perugia, Italia}
 
 \begin{abstract}
-The study of self-assembly of DNA mono-nucleotide is rather relevant for understanding how supra-molecular structuring of nucleic acid polymers in solution first appeared in universe, thus allowing for transfer and memory of genetic information in life \cite{Jia}. In this work, we numerically investigated the phase behaviour of a solution of DNA nucleotides by developing a novel, extremely coarse-grained model. Specifically, we designed a model of a single nucleotide based on a semi-disk-like polyhedron decorated with attractive sites (patchy polyhedron) for mimicking stacking and pairing interactions. Noteworthy, this model successfully captured the experimental phase behaviour of the experimental system which can be found in Ref. \cite{Smith}. For carrying out Monte Carlo simulations of patchy polyhedra we adapted algorithms borrowed from computer graphics \cite{libccd}.
+  Origins of life are based on supra-molecular structuring
+  of nucleic acid polymers in solution, which allows transfer and memory of genetic information in life. 
+  Hence, study single mono-nucleotide self-assembly into DNA duplexes is crucial to understand 
+  the emergence of life on earth.
+ . %\cite{Jia}. 
+  In this work, we numerically investigated the phase behaviour of a solution of DNA
+  mono-nucleotides by developing a novel, extremely coarse-grained model. Specifically, 
+  we designed a model of a single nucleotide based on a semi-disk-like polyhedron decorated with attractive 
+  (patchy) sites for mimicking stacking and pairing interactions. Noteworthy, 
+  this model successfully captured the experimental phase behavior which has been recently studied.
+  We carried out Monte Carlo simulations of patchy polyhedra by adapting algorithms borrowed 
+  from computer graphics.% \cite{libccd}.
 \end{abstract}
 
 \maketitle
 
 
 \section{Introduction}
-Understanding the liquid crystal phase of DNA holds paramount significance in unraveling the enigma of life's origins. The self-assembly of DNA mono-nucleotides not only sheds light on the genesis of supra-molecular structures crucial for genetic information transfer and memory in life but also resonates profoundly with theories on the emergence of life itself\cite{Jia}. While the RNA World propose initial biomolecules for life's inception, the Liquid Crystal World theory introduces a compelling perspective, suggesting that liquid crystal assemblies of nucleic acids may have facilitated the emergence of biopolymers necessary for life. In this context, the study of DNA liquid crystals not only offers insights into fundamental processes but also unveils potential scenarios for life's beginnings on Earth.  \\
+Understanding the liquid crystal phase of DNA is of paramount significance for unraveling the enigma of origins of life
+on earth. Understanding the self-assembly of DNA mono-nucleotides not only could shed light on the genesis of 
+supra-molecular structures crucial for genetic information transfer and memory in life, but also could help the 
+development/validation of theories on the emergence of life itself\cite{Jia}. 
+For example it has been argued that  liquid crystal assemblies of nucleic acids may have facilitated the formation 
+of long biopolymers necessary for life. In this context, the study of DNA liquid crystals may provide 
+insights into the fundamental processes behind life emergence.  \\
 
-Recent research has demonstrated a fascinating phenomenon in the behaviour of nucleic acid nucleotide triphosphates (dNTPs) when subjected to specific conditions: at sufficiently high concentrations and low temperatures in an aqueous solution, these molecules undergo a liquid crystalline transition, manifesting into a columnar phase \cite{Smith}. These DNA strands, with an approximate length of 4 nm, possess the capacity to stack, forming longer strands, a critical characteristic enabling the formation of the columnar phase. Intriguingly, experimental observations of this behaviour have sparked significant interest in constructing computational models aimed at simulating DNA strands to predict system behaviours. Several scholarly works, particularly Ref.  \cite{Nguyen} \ \cite{C0JM02355H} \ \cite{Bellini}, have introduced coarse-grained models approximating these filaments as hard cylinders and quasi-cylinders, each with two attractive patches. While these computer simulations systems reveal the presence of nematic liquid crystalline phases under specific combinations of concentration and temperature, experimental investigations utilising dNTPs fail to observe these nematic phases. This inconsistency between experimental findings and simulation results prompts the pursuit of a resolution. Our study seeks to address this discordance by proposing a novel coarse-grained model capable of exhibiting a columnar phase without transitioning into a nematic phase.
+Recent research has demonstrated a fascinating phenomenon in the behavior of nucleic acid nucleotide triphosphates
+(dNTPs) when subjected to specific conditions: at sufficiently high concentrations and low temperatures in an aqueous
+solution, these molecules undergo a liquid crystalline transition to a columnar phase~\cite{Smith}. 
+%%%% TODO: sono arrivato qui
+These
+DNA strands, with an approximate length of 4 nm, can stack one on top of each other, forming longer strands and thus 
+inducing the formation of the columnar phase. Intriguingly, experimental observations of this behavior 
+have sparked significant interest in constructing computational models aimed at simulating DNA strands to predict system
+behaviours. Several scholarly works, particularly Ref.~\cite{Nguyen,C0JM02355H,Bellini}, have
+introduced coarse-grained models approximating these filaments as hard cylinders and quasi-cylinders, each with two
+attractive patches. While these computer simulations systems reveal the presence of nematic liquid crystalline phases
+under specific combinations of concentration and temperature, experimental investigations utilising dNTPs fail to
+observe these nematic phases. This inconsistency between experimental findings and simulation results prompts the
+pursuit of a resolution. Our study seeks to address this discordance by proposing a novel coarse-grained model capable
+of exhibiting a columnar phase without transitioning into a nematic phase.
 
 \section{\label{sec:level1}Model and simulation details}
 \begin{figure}[h!]
 \includegraphics[width=1\linewidth]{rota.png}
 \caption{\label{fig:rota} Semi-disk, that approximate the single nucleotides, with 4 attractive patches, two for stacking and two for pairing. The staking patches are rotated by $\pi/10$ so that the strand rotates on itself.}
 \end{figure}
-In the domain of computational modeling, our methodology involves simulating individual nucleotides as semi-disks featuring four distinct attractive patches. Specifically, a pair of patches is strategically positioned along the cut edge of the semi-disks to replicate the base-base pairing phenomenon, while an additional patch is allocated for each base of the semi-disk to mimic the stacking behaviour of base pairs. Notably, to encapsulate the characteristic rotational dynamics of DNA strands, the stacking patches are programmed to perform a complete rotation every 12 bases, rotating them by $\pi/10$ as illustrated in Figure \ref{fig:rota}. 
+In the domain of computational modeling, our methodology involves simulating individual nucleotides as semi-disks
+featuring four distinct attractive patches. Specifically, a pair of patches is strategically positioned along the cut
+edge of the semi-disks to replicate the base-base pairing phenomenon, while an additional patch is allocated for each
+base of the semi-disk to mimic the stacking behaviour of base pairs. Notably, to encapsulate the characteristic
+rotational dynamics of DNA strands, the stacking patches are programmed to perform a complete rotation every 12 bases,
+rotating them by $\pi/10$ as illustrated in Figure~\ref{fig:rota}. 
 
 
-Given the irregular geometry of semi-disks resulting from the cutting process, a finite number of vertices are utilised to approximate these structures as convex polyhedra. Subsequent investigation aimed at assessing the potential alteration in the system's physics resulting from this approximation is detailed in the ensuing paragraph. The choice of algorithm for computing intersections of convex polyhedra holds significant importance. Following a comprehensive evaluation, Xenocollide\cite{libccd} emerges as the optimal solution, offering a favourable compromise between computational efficiency and reliability.\\
+Given the irregular geometry of semi-disks resulting from the cutting process, a finite number of vertices are utilised
+to approximate these structures as convex polyhedra. Subsequent investigation aimed at assessing the potential
+alteration in the system's physics resulting from this approximation is detailed in the ensuing paragraph. The choice of
+algorithm for computing intersections of convex polyhedra holds significant importance. Following a comprehensive
+evaluation, Xenocollide\cite{libccd} emerges as the optimal solution, offering a favourable compromise between
+computational efficiency and reliability.\\
 
-Furthermore, iterative adjustments to the model parameters are undertaken to ensure congruence with experimental data. This includes fine-tuning the spatial placement and size of the attractive patches, as well as refining the dimensions and rotational dynamics of the stacking patches. These refinements are imperative for achieving concordance between simulation outputs and empirical measures such as the persistence length and the length of the DNA filament. 
+Furthermore, iterative adjustments to the model parameters are undertaken to ensure congruence with experimental data.
+This includes fine-tuning the spatial placement and size of the attractive patches, as well as refining the dimensions
+and rotational dynamics of the stacking patches. These refinements are imperative for achieving concordance between
+simulation outputs and empirical measures such as the persistence length and the length of the DNA filament. 
 
 \begin{figure}[h!]
 \includegraphics[width=0.7\linewidth]{sosti4.png}
@@ -63,17 +108,30 @@ Furthermore, iterative adjustments to the model parameters are undertaken to ens
 To expedite simulation processes, the liquid crystalline phases (namely, nematic and columnar) are initially discerned utilising four-patch cylinders. Subsequently, these cylinders are substituted with filamentous semi-disks, and the stability is ascertained through Monte Carlo NVT simulations. The equation of state is subsequently formulated, encompassing isotropic (I), nematic (N), and columnar (C) phases pertinent to four-patch cylinders, as illustrated in Figure 2. The adoption of four-patch cylinders facilitates the seamless integration of 24 semi-disk filaments, ensuring alignment of the final patches and the preservation of intermolecular bonds upon substitution, as shown in Figure \ref{fig:fila}.
 
 \subsection{Polyhedra approximation}
-The polyhedral approximation must be validated to ensure it maintains fidelity to the physics of the simulation. Determination of an optimal number of vertices for polyhedra approximation, balancing computational efficiency and accuracy, is crucial. Limiting the number of vertices is imperative to prevent excessive simulation times, using the \textit{Xenocollide} algorithm, where execution time scales linearly with vertex count. Thus we investigate the equation of state for hard cylinders, with and without polyhedra approximation, in an NPT ensemble at a constant temperature for two cylinder elongations. Cylinders were approximated by polyhedra with 16, 24 and 32 vertices, followed by system equilibration over four million Monte Carlo steps.
-\begin{figure}[h!]
-\includegraphics[width=0.9\linewidth]{cylapprox.png}
-\caption{\label{fig:cylapprox} Equation of state of cylinders with aspect ratio of $L/D=3.68794$. The equation of state of the cylinders is compared with their approximation to polyhedra with 16, 24 and 32 vertices.}
+The polyhedral approximation must be validated to ensure it maintains fidelity to the physics of the simulation.
+Determination of an optimal number of vertices for polyhedra approximation, balancing computational efficiency and
+accuracy, is crucial. Limiting the number of vertices is imperative to prevent excessive simulation times, using the
+\textit{Xenocollide} algorithm, where execution time scales linearly with vertex count. Thus we investigate the equation
+of state for hard cylinders, with and without polyhedra approximation, in an NPT ensemble at a constant temperature for
+two cylinder elongations. Cylinders were approximated by polyhedra with 16, 24 and 32 vertices, followed by system
+equilibration over four million Monte Carlo steps.
+\begin{figure}[h!] \includegraphics[width=0.9\linewidth]{cylapprox.png}
+  \caption{\label{fig:cylapprox} Equation of state of cylinders with aspect ratio of $L/D=3.68794$. The equation of
+  state of the cylinders is compared with their approximation to polyhedra with 16, 24 and 32 vertices.}
 \end{figure}
 
-Figure \ref{fig:cylapprox} illustrate the resulting equations of state, demonstrating preservation of system phase transitions. A slight shift towards smaller volume fractions is observed, particularly notable with lower vertex counts. However, satisfactory approximation is achieved with $V=32$ vertices. Thus, this vertex count is generally adopted herein, unless explicitly specified otherwise.
+Figure~\ref{fig:cylapprox} illustrate the resulting equations of state, demonstrating preservation of system phase
+transitions. A slight shift towards smaller volume fractions is observed, particularly notable with lower vertex counts.
+However, satisfactory approximation is achieved with $V=32$ vertices. Thus, this vertex count is generally adopted
+herein, unless explicitly specified otherwise.
 
 \subsection{Stacking Free Energy}
 
-In this paragraph, we discuss the calculation of the Stacking free energy \cite{Michele}, which is essential for transitioning from two-patch cylinders to four-patch cylinders. Indeed, when replacing the cylinders with cut disks in nematic or columnar phases, the transition entails having one patch per base with two patches. Since the aim is to maintain the bonding energy unchanged, it is imperative to enforce the same stacking free energy in both systems. Stacking free energy is defined as:
+In this paragraph, we discuss the calculation of the Stacking free energy~\cite{Michele}, which is essential for
+transitioning from two-patch cylinders to four-patch cylinders. Indeed, when replacing the cylinders with cut disks in
+nematic or columnar phases, the transition entails having one patch per base with two patches. Since the aim is to
+maintain the bonding energy unchanged, it is imperative to enforce the same stacking free energy in both systems.
+Stacking free energy is defined as:
 \begin{equation}
 	\beta\Delta F_b=\ln \bigg[2\frac{\Delta(T)}{v_d}\bigg]
 	\label{deltaf}
@@ -85,16 +143,31 @@ where:
 	\Delta(T)=\frac{1}{4}\bigg\langle \int_{V_b} [e^{-\beta V(\textbf{r}_{12}, \Omega_1, \Omega_2)}-1]d\textbf{r}_{12}\bigg\rangle
 \end{equation}
 
-With $\textbf{r}$ denoting the vector connecting the centers of mass of particle 1 and particle 2, $\Omega_i$ representing the orientation of the i-th particle, and $\langle ... \rangle$ indicating the average taken over all directions, $v_d$ stands for the volume of the considered object, while $V_b$ represents the bonding volume. The calculation of $\Delta (T)$, in the case of attractive patches, is simplified because it suffices to calculate the probability of obtaining a single bond and that of obtaining a double bond, then weigh them respectively by $\exp(\beta U_0)$ and $\exp(2\beta U_0)$. Consequently, the equation for $\Delta (T)$ in eq. (\ref{deltat}) becomes:
+With $\textbf{r}$ denoting the vector connecting the centers of mass of particle 1 and particle 2, $\Omega_i$
+representing the orientation of the i-th particle, and $\langle\ldots\rangle$ indicating the average taken over all
+directions, $v_d$ stands for the volume of the considered object, while $V_b$ represents the bonding volume. The
+calculation of $\Delta (T)$, in the case of attractive patches, is simplified because it suffices to calculate the
+probability of obtaining a single bond and that of obtaining a double bond, then weigh them respectively by $\exp(\beta
+U_0)$ and $\exp(2\beta U_0)$. Consequently, the equation for $\Delta (T)$ in Eq.~\eqref{deltat} becomes:
 \begin{equation}
 \label{deltat2}
 	\Delta(T)=\frac{1}{4N}\big( N_1(e^{\beta u_0}-1)+N_2(e^{2\beta u_0}-1)\big)
 \end{equation}
 
-Where $N$ indicates the total number of insertions, $N_1$ and $N_2$ represent the occurrences of having one and two bonds, respectively. Subsequently, a program is developed to insert a cylinder at the origin and then insert a second cylinder with random position and orientation inside a box with dimensions sufficient to contain both. The number of bonded patches is verified for each insertion, with a total of 5 billion insertions performed. Following the simulations, the reduced temperature, defined as $T^*_{2 patch}=k_BT_{2 patch}/U_0$, is sought, such that $\Delta F_b^{1 patch}(T^*_{1 patch})=\Delta F_b^{2 patch}(T^*_{2 patch})$, which is then utilised in simulations of cut disks to attain the same stacking free energy.
+Where $N$ indicates the total number of insertions, $N_1$ and $N_2$ represent the occurrences of having one and two
+bonds, respectively. Subsequently, a program is developed to insert a cylinder at the origin and then insert a second
+cylinder with random position and orientation inside a box with dimensions sufficient to contain both. The number of
+bonded patches is verified for each insertion, with a total of 5 billion insertions performed. Following the
+simulations, the reduced temperature, defined as $T^*_{2 patch}=k_B T_{2 patch}/U_0$, is sought, such that 
+${\Delta F_b}^{1 patch}(T^*_{1 patch})=\Delta F_b^{2 patch}(T^*_{2 patch})$, which is then utilised in simulations of cut disks to attain
+the same stacking free energy.
 
 \subsection{EOS cylinder with 4 patches}
-Cylinders with 4 attractive patches are simulated to construct the equation of state, demonstrating the phase transition between isotropic-nematic and nematic-columnar phases. The result is illustrated in Figure \ref{fig:eos1}, where isotropic phases are considered those with nematic order parameter $S<0.15$, and columnar phases are considered those with hexagonal order parameter $\psi_6 > 0.3$. The nematic order parameter $S$ and the hexagonal order parameter $\psi_6 $ are calculated respectively by: 
+Cylinders with 4 attractive patches are simulated to construct the equation of state, demonstrating the phase transition
+between isotropic-nematic and nematic-columnar phases. The result is illustrated in Figure~\ref{fig:eos1}, where
+isotropic phases are considered those with nematic order parameter $S<0.15$, and columnar phases are considered those
+with hexagonal order parameter $\psi_6 > 0.3$. The nematic order parameter $S$ and the hexagonal order parameter $\psi_6
+$ are calculated respectively by: 
 \begin{equation}  
 \label{pordnem}
 S= \bigg\langle \frac{3}{2} \cos^2\theta - \frac{1}{2} \bigg\rangle; \; \; \; \; \; \; \; \; \; \langle \psi_6\rangle=\bigg\langle \frac{1}{N} \sum_{i=1}^N \frac{1}{n(i)} \sum_{j=1}^{n(i)}e^{6i\theta_{ij}} \bigg\rangle
@@ -115,21 +188,38 @@ The discrepancies observed in the equation of state can be ascribed to the const
 
 
 \section{\label{Results}Results}
-To verify the stability of the nematic and columnar phases, by substituting the cylinders with semi-disks filaments, NVT simulations are conducted. The substitution with filaments should be done without creating intersections between the objects; hence the filament must be entirely contained within the original cylinder without any parts protruding outside of it. The distance between the paired bases of the filament is chosen so that the final height matches that of the cylinder being replaced. Additionally, the filament is constructed by introducing a rotation of $\pi/5$, between base pairs, to ensure that the stacking patches are already connected. To represent the substitution process, the nematic phase at $P^*=0.55$ is selected, and the substitution process is illustrated in Figure \ref{sosti1}.
+To verify the stability of the nematic and columnar phases, by substituting the cylinders with semi-disks filaments, NVT
+simulations are conducted. The substitution with filaments should be done without creating intersections between the
+objects; hence the filament must be entirely contained within the original cylinder without any parts protruding outside
+of it. The distance between the paired bases of the filament is chosen so that the final height matches that of the
+cylinder being replaced. Additionally, the filament is constructed by introducing a rotation of $\pi/5$, between base
+pairs, to ensure that the stacking patches are already connected. To represent the substitution process, the nematic
+phase at $P^*=0.55$ is selected, and the substitution process is illustrated in Figure \ref{sosti1}.
 
 \begin{figure}[h!]
 \includegraphics[width=0.9\linewidth]{sosti1.png} 
 \caption{\label{sosti1} (\textbf{a}) Nematic phase with cylinders at pressure $P^*=0.55$. (\textbf{b}) Nematic phase after replacement with filaments. } 
 \end{figure} 
 
-The depth of the pairing patch well remains to be defined. Experimentally, the stacking bond is approximately an order of magnitude stronger than the pairing bond. However, this difference depends on various factors, such as the solution in which the DNA filaments are found. Consequently, the same energy is assigned to both pairing and stacking bonds. This decision is made because if the phase dissolution occurs even under these conditions, it will certainly happen with weaker pairing bonds. To achieve the same energy for stacking and pairing bonds, considering that pairing bonds consist of two patches, the depth of the pairing patch well is halved.\\
- Three nematic phases and four columnar phases of cylinders with different volume fractions, and thus concentrations, are selected as indicated in red in Figure \ref{fig:eos1}, then the cylinders are replaced by filaments of 12 pairs of dNTPs and their stability is studied using a Monte Carlo NVT simulation at various temperatures $T^*=[0.10:0.15]$. It is noted that within the temperature range studied, the initially nematic phases are never stable, whereas the initially columnar phases are stable at low temperatures. 
- \begin{figure*}[t!]
-\includegraphics[width=0.7\linewidth]{finaleeng.png}
-\caption{\label{fig:wide}Phase diagram of dTTP/dATP DNA strands. The square and round symbols refer to the experimental results while the triangular symbols refer to the results obtained from the simulations. The orange area indicates where the columnar phase is present.}
+The depth of the pairing patch well remains to be defined. Experimentally, the stacking bond is approximately an order
+of magnitude stronger than the pairing bond. However, this difference depends on various factors, such as the solution
+in which the DNA filaments are found. Consequently, the same energy is assigned to both pairing and stacking bonds. This
+decision is made because if the phase dissolution occurs even under these conditions, it will certainly happen with
+weaker pairing bonds. To achieve the same energy for stacking and pairing bonds, considering that pairing bonds consist
+of two patches, the depth of the pairing patch well is halved.\\
+Three nematic phases and four columnar phases of cylinders with different volume fractions, and thus concentrations, are
+selected as indicated in red in Figure~\ref{fig:eos1}, then the cylinders are replaced by filaments of 12 pairs of dNTPs
+and their stability is studied using a Monte Carlo NVT simulation at various temperatures $T^*=[0.10:0.15]$. It is noted
+that within the temperature range studied, the initially nematic phases are never stable, whereas the initially columnar
+phases are stable at low temperatures. 
+\begin{figure*}[t!] \includegraphics[width=0.7\linewidth]{finaleeng.png} \caption{\label{fig:wide}Phase diagram of
+    dTTP/dATP DNA strands. The square and round symbols refer to the experimental results while the triangular symbols
+  refer to the results obtained from the simulations. The orange area indicates where the columnar phase is present.}
 \end{figure*}
 
- The result is illustrated in Figure \ref{fig:par} through the nematic and columnar order parameters for two configurations, one starting with a nematic phase and one starting with a columnar phase. The pair distribution functions of the columnar case in the plane orthogonal to the alignment direction are also shown in the Figure \ref{fig:par}; note the worsening of the hexagonal order as the temperature increases.
+ The result is illustrated in Figure~\ref{fig:par} through the nematic and columnar order parameters for two
+ configurations, one starting with a nematic phase and one starting with a columnar phase. The pair distribution
+ functions of the columnar case in the plane orthogonal to the alignment direction are also shown in the Figure~\ref{fig:par}; note the worsening of the hexagonal order as the temperature increases.
 
 
 \begin{figure}[h!]
