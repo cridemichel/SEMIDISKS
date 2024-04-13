@@ -18,7 +18,7 @@
 
 \begin{document}
 
-\title{Probing DNA Mono-nucleotide Self-Assembly: A Novel Coarse-Grained Model Exploration}
+\title{In-silico study of DNA Mono-nucleotide Self-Assembly}
 \date{\today}
 
 \author{Mattia Trapella}
@@ -111,7 +111,22 @@ the attractive patches, as well as a refinement of the geometry and position of 
 \caption{\label{fig:fila} The cylinder is replaced by 24 semi-disks. the cylinder patches are rotated to match once the semi-disks are replaced.}
 \end{figure}
 
-To expedite simulation processes, the liquid crystalline phases (namely, nematic and columnar) are initially discerned utilising four-patch cylinders. Subsequently, these cylinders are substituted with filamentous semi-disks, and the stability is ascertained through Monte Carlo NVT simulations. The equation of state is subsequently formulated, encompassing isotropic (I), nematic (N), and columnar (C) phases pertinent to four-patch cylinders, as illustrated in Figure 2. The adoption of four-patch cylinders facilitates the seamless integration of 24 semi-disk filaments, ensuring alignment of the final patches and the preservation of intermolecular bonds upon substitution, as shown in Figure \ref{fig:fila}.
+In our simulations we first check that patchy semidisks (PSDs) selfassemble into 
+cylinder-like aggregates in a small system. In Fig.~\ref{fig:sdselfass}(a) we show an initial isotropic configurations of PSD and a subsequent equilibrium 
+configuration with cylinder-like aggregates. 
+
+Since the equilibration process starting from unbonded PSDs is rather slow, 
+it will take much time to equilibrate a system large enough to avoid finite size
+effects, hence we use the following approach.
+Equilibrium liquid crystalline phases (namely, nematic and columnar) are 
+initially obtained for patchy cylinders (PHCs). 
+In particular we built the whole equation of state of PHCs which exhibits
+isotropic (I), nematic (N), and columnar (C) phases as illustrated in Figure 2.
+Note that the adoption of four-patch cylinders ensure that by replacing
+them with a set of PSDs the bonds between two distinct PSDs are preserved as shown in Figure~\ref{fig:fila}.
+%%After PHCs are replaced with a set of PSDs, we also checked their stability 
+%%through a NTV simulation.
+
 %%%% TODO: sono arrivato qui
 
 \subsection{Polyhedra approximation}
