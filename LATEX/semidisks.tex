@@ -132,17 +132,25 @@ them with a set of PSDs the bonds between two distinct PSDs are preserved as sho
 %%%% TODO: sono arrivato qui
 
 \subsection{Polyhedra approximation}
-The polyhedral approximation must be validated to ensure it maintains fidelity to the physics of the simulation.
-Determination of an optimal number of vertices for polyhedra approximation, balancing computational efficiency and
-accuracy, is crucial. Limiting the number of vertices is imperative to prevent excessive simulation times, using the
-\textit{Xenocollide} algorithm, where execution time scales linearly with vertex count. Thus we investigate the equation
-of state for hard cylinders, with and without polyhedra approximation, in an NPT ensemble at a constant temperature for
-two cylinder elongations. Cylinders were approximated by polyhedra with 16, 24 and 32 vertices, followed by system
-equilibration over four million Monte Carlo steps.
+First we discuss how to approximate a semidisk with a convex polyhedron. We seek for using the minimal number of vertices
+which provides accurate physical properties of the system (i.e. in this case semidisk).
+Determination of an optimal number of vertices for polyhedra approximation is crucial to have an accurate physical
+description while maintaining a good computational efficiency.
+With \textit{Xenocollide} time to find if two polyhedra overlap scales linearly with the number of vertices.
+%Limiting the number of vertices is imperative to prevent excessive simulation times, using the
+%\textit{Xenocollide} algorithm, where execution time scales linearly with vertex count.
+Our strategy was to build the equation of state (EOS) of hard convex polyhedra which have a cylinder-like shape and to 
+compare this EOS with that of real hard cylinders.
+We carried out Monte Carlo simulations in the isobaric-isothermal (NPT) ensemble for
+cylinders of two different aspect ratio $X_0=L/D$, where $L$ is the length and $D$ the diameter of the cylinder. 
+We also simulated cylinder-like polyhedra with the same aspect ratio and composed of 16, 24 and 32 vertices.
+Before the production runs we equilibrated the system for at least $4$ million Monte Carlo steps and we check 
+equilibration by inspection system volume.
 \begin{figure}[h!] \includegraphics[width=0.9\linewidth]{cylapprox.png}
   \caption{\label{fig:cylapprox} Equation of state of cylinders with aspect ratio of $L/D=3.68794$. The equation of
   state of the cylinders is compared with their approximation to polyhedra with 16, 24 and 32 vertices.}
 \end{figure}
+%%%% TODO: sono arrivato qui
 
 Figure~\ref{fig:cylapprox} illustrate the resulting equations of state, demonstrating preservation of system phase
 transitions. A slight shift towards smaller volume fractions is observed, particularly notable with lower vertex counts.
