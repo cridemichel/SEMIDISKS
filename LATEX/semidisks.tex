@@ -132,7 +132,7 @@ them with a set of PSDs the bonds between two distinct PSDs are preserved as sho
 %%%% TODO: sono arrivato qui
 
 \subsection{Polyhedra approximation}
-First we discuss how to approximate a semidisk with a convex polyhedron. We seek for using the minimal number of vertices
+Here we discuss how to approximate a semidisk with a convex polyhedron. We seek for using the minimal number of vertices
 which provides accurate physical properties of the system (i.e. in this case semidisk).
 Determination of an optimal number of vertices for polyhedra approximation is crucial to have an accurate physical
 description while maintaining a good computational efficiency.
@@ -150,16 +150,16 @@ equilibration by inspection system volume.
   \caption{\label{fig:cylapprox} Equation of state of cylinders with aspect ratio of $L/D=3.68794$. The equation of
   state of the cylinders is compared with their approximation to polyhedra with 16, 24 and 32 vertices.}
 \end{figure}
-%%%% TODO: sono arrivato qui
 
-Figure~\ref{fig:cylapprox} illustrate the resulting equations of state, demonstrating preservation of system phase
-transitions. A slight shift towards smaller volume fractions is observed, particularly notable with lower vertex counts.
-However, satisfactory approximation is achieved with $V=32$ vertices. Thus, this vertex count is generally adopted
-herein, unless explicitly specified otherwise.
+Figure~\ref{fig:cylapprox} shows the resulting equations of state, where qualitative physical behavior is preserved for
+all number of vertices. It can be noted just a slight shift of EOS towards smaller volume fractions for $V= 16$ and $24$,
+while a satisfactory approximation of the EOS with that of exact cylinders is achieved with $V=32$ vertices. 
+Thus, in our numerical simulations of semidisks we will use $V=16$ vertices, being a semidisk half a cylinder. 
+%%%% TODO: sono arrivato qui
 
 \subsection{Stacking Free Energy}
 
-In this paragraph, we discuss the calculation of the Stacking free energy~\cite{Michele}, which is essential for
+In this paragraph, we discuss the calculation of the Stacking free energy~\cite{DeMichele12}, which is essential for
 transitioning from two-patch cylinders to four-patch cylinders. Indeed, when replacing the cylinders with cut disks in
 nematic or columnar phases, the transition entails having one patch per base with two patches. Since the aim is to
 maintain the bonding energy unchanged, it is imperative to enforce the same stacking free energy in both systems.
