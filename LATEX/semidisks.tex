@@ -134,7 +134,7 @@ them with a set of PSDs the bonds between two distinct PSDs are preserved as sho
 %%through a NTV simulation.
 
 
-\subsection{Polyhedra approximation}
+\subsection{Approximatio of semidisk with convex polyhedra}
 Here we discuss how to approximate a semidisk with a convex polyhedron. We seek for using the minimal number of vertices
 which provides accurate physical properties of the system (i.e. in this case semidisk).
 Determination of an optimal number of vertices for polyhedra approximation is crucial to have an accurate physical
@@ -298,7 +298,6 @@ for each starting configuration. We first note that for all temperatures investi
  Figure~\ref{fig:par} shows the nematic and columnar order parameters for two starting configurations, one nematic and the other one columnar. In this figure we also show the pair 
  distribution functions of the columnar case on the plane orthogonal to the nematic axis; note the worsening of the hexagonal ordering as the temperature increases.
 
-%%%% TODO: sono arrivato qui
 
 \subsection{Comparative Analysis of Experimental and Simulation Results}
 
@@ -312,7 +311,8 @@ from volume fraction $\phi$ to concentration $c$ in mg/ml can be obtained as fol
 \end{equation}
 where $N$ represents the number of semi-disks within the simulation box's volume $V$, and $m_N$ denotes the molecular mass of a single nucleotide, measured in Daltons ($Da$). For dTTP and dATP filaments, the molecular masses are $m_N=482.2\; Da$ and $m_N=491.2\; Da$ respectively. Since the experimental results refer to a mixture of dTTP and dATP filaments, we consider for
 the conversion the average molecular masses of the two species, i.e. $m_N=486.7\; Da$. 
-Figure~\ref{fig:wide}, shows experimental findings of dATP/dTTP filaments \cite{Smith} together with Monte Carlo simulation results of PSDs. 
+Figure~\ref{fig:wide}, shows experimental 
+findings of dATP/dTTP filaments~\cite{Smith} together with Monte Carlo simulation results of PSDs. 
 Above a concentration of 600 mg/ml simulations exhibit a phase transition from I to Col, whereas at lower concentration
 system is isotropic for all temperatures investigated. This behavior mathes the experimental results and more interestingly
 our model seems to have the right temperature dependence concerning the phase boundaries.
@@ -322,23 +322,29 @@ our model seems to have the right temperature dependence concerning the phase bo
   refer to the results obtained from the simulations. The orange area indicates where the columnar phase is present.}
 \end{figure*}
 
-The absence of a nematic phase in the phase diagram of PSDs can be rationalized through Wertheim theory.
-Indeed, if we consider aggregating bifunctional HCs of length $L$ and diameter $D$ 
-the will form a polydisperse set of polymers (e.g. see~\cite{DeMichele12}).
-According to wertheim theory the average number $M$ of HCs belonging to a polymer at a given concentration 
+
+
+The absence of a nematic phase in the phase diagram of PSDs can be rationalized through Wertheim-like
+theory developed in Refs.~\cite{Macromol12}.Indeed, if we consider aggregating bifunctional HCs of 
+length $L$ and diameter $D$ the will form a polydisperse set of polymers (e.g.~see~\cite{DeMichele12}).
+We start noting that, in our present case, the self-assembled structure formed by PSDs can be regarded 
+as a set of $12$ disks formed each by two paires PSDs, where the stacking free energy of two disks is equal to 
+that of two PHCs with four attractive patches.
+
+According to the theory, the average number $M$ of HCs belonging to a polymer at a given concentration 
 and temperature in the isotropic phase is:
 \begin{equation}
 M(\phi, T) = \frac{1}{2}\left( 1 + \sqrt{1 + 4 \phi e^{k_I \phi \eta(\phi)+\beta {\Delta F}_b}} \right) 
 \end{equation}
-where $k_I$ is a geometric factor, $\eta(\phi) = \frac{1}{4} \frac{4-3\phi}{(1-\phi)^2}$ is the Parsons-Lee factor
-and ${\Delta F}_b$ is a the stacking free energy.
-If we replace each HC with a set of $N_{sd}$ disks of diameter $D$ length $L/N_{sd}$, whereas the attraction between two 
-disks is still ${\Delta F}_b$, for this new system we have:
-\begin{equation}
- M(\phi, T) = \frac{1}{2}\left( 1 + \sqrt{1 + 4 \phi e^{k_I \phi \eta(\phi)+\beta {\Delta F}_b}} \right) 
-\end{equation}
-
-
+where $k_I$ is a geometric factor that does not depend on HC length $L$, 
+$\eta(\phi) = \frac{1}{4} \frac{4-3\phi}{{(1-\phi)}^2}$ is the Parsons-Lee factor
+and ${\Delta F}_b$ is the stacking free energy.
+If we replace each HC with a set of $N_{sd}$ disks of diameter $D$ length $L/N_{sd}$, whereas the stacking energy between two 
+disks is still ${\Delta F}_b$, we can expect $M$ to be unchanged. Anyway, the average contour length ${\cal L}$
+is now $\frac{L}{N_{sd}}*M$ while in the previous case it was $\frac{L}{M}$.
+Hence the average contour length of polymers becomes $N_{sd}$ times shorter. 
+This means that at a given temperature IN transition shifts to much higher concentrations, if we consider HCs with smaller $L$
+, thus making it hindered by the columnar phase.
 
 
 {\color{green}COMMENTO: spiegare con teoria di Wertheim il comportamento osservato, ovvero
