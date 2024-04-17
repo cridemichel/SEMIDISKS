@@ -323,7 +323,22 @@ our model seems to have the right temperature dependence concerning the phase bo
 \end{figure*}
 
 The absence of a nematic phase in the phase diagram of PSDs can be rationalized through Wertheim theory.
-Indeed,
+Indeed, if we consider aggregating bifunctional HCs of length $L$ and diameter $D$ 
+the will form a polydisperse set of polymers (e.g. see~\cite{DeMichele12}).
+According to wertheim theory the average number $M$ of HCs belonging to a polymer at a given concentration 
+and temperature in the isotropic phase is:
+\begin{equation}
+M(\phi, T) = \frac{1}{2}\left( 1 + \sqrt{1 + 4 \phi e^{k_I \phi \eta(\phi)+\beta {\Delta F}_b}} \right) 
+\end{equation}
+where $k_I$ is a geometric factor, $\eta(\phi) = \frac{1}{4} \frac{4-3\phi}{(1-\phi)^2}$ is the Parsons-Lee factor
+and ${\Delta F}_b$ is a the stacking free energy.
+If we replace each HC with a set of $N_{sd}$ disks of diameter $D$ length $L/N_{sd}$, whereas the attraction between two 
+disks is still ${\Delta F}_b$, for this new system we have:
+\begin{equation}
+ M(\phi, T) = \frac{1}{2}\left( 1 + \sqrt{1 + 4 \phi e^{k_I \phi \eta(\phi)+\beta {\Delta F}_b}} \right) 
+\end{equation}
+
+
 
 
 {\color{green}COMMENTO: spiegare con teoria di Wertheim il comportamento osservato, ovvero
@@ -331,7 +346,7 @@ l'assenza della fase colonnare}
 
 
 
-\section{\label{Dis}Conclusion}
+\section{\label{Dis}Conclusions}
 
 Our study presents a novel coarse-grained model that successfully elucidates the liquid crystal phase behaviour of dTTP/dATP nucleotide solutions. By employing semi-disk-like polyhedra decorated with four attractive patches to mimic stacking and pairing interactions, our model accurately replicates experimental observations of columnar phases without transitioning into nematic phases, a discrepancy previously encountered in computational simulations. Through meticulous adjustments and validations, including the calculation of Stacking free energy and substitution processes, our model demonstrates robustness in capturing the intricate behaviours of DNA nucleotides. Furthermore, our simulations offer insights into the stability of nematic and columnar phases under varying concentrations and temperatures. Notably, the stability of columnar phases at low temperatures corroborates experimental findings and underscores the predictive capability of our model. The comparison between simulation results and experimental data on dTTP/dATP filaments further validates the efficacy of our approach, highlighting concordance in phase transitions observed at different concentrations. \\
 
