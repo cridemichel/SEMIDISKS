@@ -1,3 +1,4 @@
+%! TeX program = lualatex
 \documentclass[aip,jcp, amsmath, amssymb, reprint]{revtex4-1}
 
 \usepackage{graphicx}% Include figure files
@@ -67,9 +68,10 @@ These dNTPs, with an approximate length of 4 nm, can stack one on top of each ot
 inducing the formation of the columnar phase. These experimental findings calls for 
 the development of computational model able to capture and understand the observed phase behavior.
 In the literature~\cite{Nguyen,C0JM02355H,Bellini} 
-coarse-grained models have been proposed which approximate these filaments as hard cylinders and quasi-cylinders, each with two
-attractive patches. Anyway, these models exhibit a different phase behavior, in that a nematic liquid crystal is also formed
-under suitable concentration and temperature, whereas this phase is not observed for dNTDs.
+coarse-grained models have been proposed which approximate these filaments as hard cylinders and quasi-cylinders, each with two attractive patches. These models well describe the phase behavior of DNA duplexes (e.g. the Dickerson
+dodecamer~\cite{DeMichele12}), exhibiting an isotropic, nematic and columnar phases.
+Anyway, DNA mononucleotide do not form a nematic phase at temperatures and concentrations 
+similar to those of DNA duplexes.
 This inconsistency between experimental findings and simulations results prompts the
 pursuit of a suitable numerical description of these experiments. 
 The goal of the present work is precisely to develop a coarse-grained mode of dNTPs which fully accounts for the experimental 
@@ -317,5 +319,5 @@ Our study presents a novel coarse-grained model that successfully elucidates the
 Overall, our study not only advances our understanding of liquid crystal phase behaviour in DNA nucleotide solutions but also underscores the potential of computational modelling in elucidating complex molecular phenomena. Future research endeavours may leverage our coarse-grained model to explore additional nucleotide systems and unravel further intricacies underlying liquid crystal phase transitions in nucleic acid polymers.
 
 
-\bibliography{bib_cit}
+\bibliography{semidisks}
 \end{document}
