@@ -302,17 +302,28 @@ for each starting configuration. We first note that for all temperatures investi
 
 \subsection{Comparative Analysis of Experimental and Simulation Results}
 
-The simulation results are compared with the experimental findings regarding dTTP/dATP \cite{Smith}. Experimental outcomes are delineated using concentration, expressed in units of measure ($mg/ml$). Therefore, to align simulation results with experimental data, a conversion utilising Equation \ref{conc} is necessary. 
+Here we compare simulations results with experimental findings on dTTP/dATP mononucleotides~\cite{Smith}.
+We expressed system concentration $c$ of computer simulations in mg/ml, where the conversion 
+from volume fraction $\phi$ to concentration $c$ in mg/ml can be obtained as follows
+
 \begin{equation}
 	c=\frac{N}{V}m_N
 	\label{conc}
 \end{equation}
-In this equation, $c$ denotes concentration, $N$ represents the number of semi-disks within the simulation box's volume $V$, and $m_N$ denotes the molecular mass of a single nucleotide, measured in Daltons ($Da$). For dTTP and dATP filaments, respective molecular masses are $m_N=482.2\; Da$ and $m_N=491.2\; Da$. Since the experimental results pertain to a mixture of dTTP and dATP filaments, the average of the two molecular masses is taken: $m_N=486.7\; Da$. In Figure \ref{fig:wide}, experimental findings on dATP/dTTP filaments \cite{Smith} are juxtaposed with Monte Carlo simulation results of semi-disks conducted in this study. Simulations initialised from higher concentrations exhibit a phase transition, whereas such a transition is absent at lower concentrations. This observed behaviour aligns with the experimental trajectory. Moreover, elevating the simulation temperature leads to a transition from columnar phases to isotropic-columnar phases, characterised by partial ordering.
+where $N$ represents the number of semi-disks within the simulation box's volume $V$, and $m_N$ denotes the molecular mass of a single nucleotide, measured in Daltons ($Da$). For dTTP and dATP filaments, the molecular masses are $m_N=482.2\; Da$ and $m_N=491.2\; Da$ respectively. Since the experimental results refer to a mixture of dTTP and dATP filaments, we consider for
+the conversion the average molecular masses of the two species, i.e. $m_N=486.7\; Da$. 
+Figure~\ref{fig:wide}, shows experimental findings of dATP/dTTP filaments \cite{Smith} together with Monte Carlo simulation results of PSDs. 
+Above a concentration of 600 mg/ml simulations exhibit a phase transition from I to Col, whereas at lower concentration
+system is isotropic for all temperatures investigated. This behavior mathes the experimental results and more interestingly
+our model seems to have the right temperature dependence concerning the phase boundaries.
 
 \begin{figure*}[t!] \includegraphics[width=0.7\linewidth]{finaleeng.png} \caption{\label{fig:wide}Phase diagram of
     dTTP/dATP DNA strands. The square and round symbols refer to the experimental results while the triangular symbols
   refer to the results obtained from the simulations. The orange area indicates where the columnar phase is present.}
 \end{figure*}
+
+The absence of a nematic phase in the phase diagram of PSDs can be rationalized through Wertheim theory.
+Indeed,
 
 
 {\color{green}COMMENTO: spiegare con teoria di Wertheim il comportamento osservato, ovvero
