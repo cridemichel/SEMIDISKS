@@ -242,10 +242,13 @@ As initial configuration for simulating PSDs we used those corresponding to the 
 
 %Three nematic phases and four columnar phases of cylinders with different volume fractions, and thus concentrations,
 %are selected as indicated in red in Figure~\ref{fig:eos1}, then the cylinders are replaced by filaments of 12 pairs of
-The dNTPs and their stability are studied by carrying out a Monte Carlo NVT simulation at various temperatures $T^*=[0.10:0.15]$
-for each starting configuration. We first note that for all temperatures investigated, the initially nematic phases are never stable and system always become isotropic, whereas the initially columnar phases are stable at low temperatures.  
- Figure~\ref{fig:par} shows the nematic and columnar order parameters for two starting configurations, one nematic and the other one columnar. In this figure we also show the pair 
- distribution functions of the columnar case on the plane orthogonal to the nematic axis; note the worsening of the hexagonal ordering as the temperature increases.
+The dNTPs and their stability are studied by carrying out a Monte Carlo NVT simulation at various temperatures
+$T^*=[0.10:0.15]$ for each starting configuration. We first note that for all temperatures investigated, the initially
+nematic phases are never stable and system always become isotropic, whereas the initially columnar phases are stable at
+low temperatures.  Figure~\ref{fig:par} shows the nematic and columnar order parameters for two starting
+configurations, one nematic and the other one columnar. In this figure we also show the pair  distribution functions of
+the columnar case on the plane orthogonal to the nematic axis; note the worsening of the hexagonal ordering as the
+temperature increases.
 
 
 \subsection{Comparative Analysis of Experimental and Simulation Results}
@@ -297,9 +300,22 @@ thus making it hindered by the columnar phase.
 
 \section{\label{Dis}Conclusions}
 % work on this
-Our study presents a novel coarse-grained model that successfully elucidates the liquid crystal phase behaviour of dTTP/dATP nucleotide solutions. By employing semi-disk-like polyhedra decorated with four attractive patches to mimic stacking and pairing interactions, our model accurately replicates experimental observations of columnar phases without transitioning into nematic phases, a discrepancy previously encountered in computational simulations. Through meticulous adjustments and validations, including the calculation of Stacking free energy and substitution processes, our model demonstrates robustness in capturing the intricate behaviours of DNA nucleotides. Furthermore, our simulations offer insights into the stability of nematic and columnar phases under varying concentrations and temperatures. Notably, the stability of columnar phases at low temperatures corroborates experimental findings and underscores the predictive capability of our model. The comparison between simulation results and experimental data on dTTP/dATP filaments further validates the efficacy of our approach, highlighting concordance in phase transitions observed at different concentrations. \\
+Our study presents a novel coarse-grained model that successfully elucidates the liquid crystal phase behaviour of
+dTTP/dATP nucleotide solutions. By employing semi-disk-like polyhedra decorated with four attractive patches to mimic
+stacking and pairing interactions, our model accurately replicates experimental observations of columnar phases without
+transitioning into nematic phases, a discrepancy previously encountered in computational simulations. Through
+meticulous adjustments and validations, including the calculation of Stacking free energy and substitution processes,
+our model demonstrates robustness in capturing the intricate behaviours of DNA nucleotides. Furthermore, our
+simulations offer insights into the stability of nematic and columnar phases under varying concentrations and
+temperatures. Notably, the stability of columnar phases at low temperatures corroborates experimental findings and
+underscores the predictive capability of our model. The comparison between simulation results and experimental data on
+dTTP/dATP filaments further validates the efficacy of our approach, highlighting concordance in phase transitions
+observed at different concentrations. \\
 
-Overall, our study not only advances our understanding of liquid crystal phase behaviour in DNA nucleotide solutions but also underscores the potential of computational modelling in elucidating complex molecular phenomena. Future research endeavours may leverage our coarse-grained model to explore additional nucleotide systems and unravel further intricacies underlying liquid crystal phase transitions in nucleic acid polymers.
+Overall, our study not only advances our understanding of liquid crystal phase behaviour in DNA nucleotide solutions
+but also underscores the potential of computational modelling in elucidating complex molecular phenomena. Future
+research endeavours may leverage our coarse-grained model to explore additional nucleotide systems and unravel further
+intricacies underlying liquid crystal phase transitions in nucleic acid polymers.
 \appendix
 
 \section{Stacking Free Energy}\label{app:freeenergy}
@@ -307,12 +323,13 @@ Overall, our study not only advances our understanding of liquid crystal phase b
 In this paragraph, we discuss the calculation of the stacking free energy~\cite{DeMichele12}, which is essential for
 transitioning from two-patch cylinders to four-patch cylinders. 
 
-For speeding up the equilibration process we first carried out a simulation of HCs decorated with 4 patches on thier bases and the we replace
-these cylinders with patchy semidisks. An estimate of the stacking free energy to use for modeling DNA duplexes with hard cylinders 
-decorated with two attractive on their bases is known as discussed in Ref.~\cite{DeMichele12}. The stacking free energy required for the
-aggregation of two HCs decorated with 4 patches should be of the same order of the one for the aggregation of two HCs decorated with two patches.
-Hence, here we estimate the interaction strength of the two patches on each base of each HC in such way that the stacking free energy matches with
-the one of HCs decorated with two patches.
+For speeding up the equilibration process we first carried out a simulation of HCs decorated with 4 patches on thier
+bases and the we replace these cylinders with patchy semidisks. An estimate of the stacking free energy to use for
+modeling DNA duplexes with hard cylinders  decorated with two attractive on their bases is known as discussed in
+Ref.~\cite{DeMichele12}. The stacking free energy required for the aggregation of two HCs decorated with 4 patches
+should be of the same order of the one for the aggregation of two HCs decorated with two patches. Hence, here we
+estimate the interaction strength of the two patches on each base of each HC in such way that the stacking free energy
+matches with the one of HCs decorated with two patches.
 
 
 Stacking free energy is defined as:
