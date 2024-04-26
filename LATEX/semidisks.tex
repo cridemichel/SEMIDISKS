@@ -52,6 +52,8 @@
 
 
 \section{Introduction}
+{\bf\color{red} Tommaso c'è ancora molto da lavorare sul testo, quindi mettici liberamente mano aggiungendo 
+magari un pò di citazioni}
 Understanding the liquid crystal phase of DNA is of paramount significance for unraveling the enigma of origins of life
 on earth. Understanding the self-assembly of DNA mono-nucleotides not only could shed light on the genesis of 
 supra-molecular structures crucial for genetic information transfer and memory in life, but also could help the 
@@ -154,7 +156,6 @@ replacing HCs with PSDs for $P^*=0.55$.
 \includegraphics[width=0.9\linewidth]{sosti1.png} 
 \caption{\label{sosti1} (\textbf{a}) Nematic phase with cylinders at pressure $P^*=0.55$. (\textbf{b}) Nematic phase after replacement of HCs with PSDs. } 
 \end{figure} 
-% TODO: sono arrivato qui nella rilettura
 
 \subsection{Approximation of semidisk with convex polyhedra}
 By using the algorithm \textit{Xenocollide} the time needed to find if two polyhedra overlap scales 
@@ -200,47 +201,57 @@ where PSDs replace PHCs.
 
 \begin{figure}[h!]
 \includegraphics[width=0.86\linewidth]{eos.png}
-\caption{\label{fig:eos1} Equation of state for cylinders with aspect-ratio $X_0=2$ and 2 attractive patches per base. The simulations employ $N = 180$ particles and evolve over 4 million Monte Carlo steps. The triangles in red represent the simulations whose finale configuration are used for simulating PSDs after the replacement of HCs.}
+\caption{\label{fig:eos1} Equation of state for cylinders with aspect-ratio $X_0=2$ and 2 attractive patches per base. The simulations employ $N = 180$ particles and evolve over 4 million Monte Carlo steps. The triangles in red represent the simulations whose final configurations are used for simulating PSDs after the replacement of HCs.}
 \end{figure}
 
 The EOS of PHCs is shown in Figure~\ref{fig:eos1}, where to distinguish the various phase we inspect the radial distribution function we make use of the 
 nematic $S$ and hexagonal $\psi_6$ order parameters.
-The namatic order parameter $S$ is defined as the largest eigenvalue of the order tensors, i.e.
+The nematic order parameter $S$ is defined as the largest eigenvalue $S$ of the order tensor $\mathbf{Q}$, i.e.
 \begin{equation} 
 \label{tensornematic} 
-\textit{\textbf{Q}}_{\alpha \beta}=S \bigg[\frac{3}{2} \textit{l}_{\alpha} \textit{l}_{\beta} - \frac{1}{2} \delta_{\alpha\beta} \bigg]
+\textit{\textbf{Q}}_{\alpha \beta}=\frac{1}{N}\sum_i^{N} 
+\bigg[\frac{3}{2} {(\mathbf{u}_i)}_{\alpha} {(\mathbf{u}_i)}_{\beta} - \frac{1}{2} \delta_{\alpha\beta} \bigg]
 \end{equation}
-where $\hat{\textit{\textbf{l}}}$ is the generic alignment direction and $S=\langle P_2(\cos \theta)\rangle$, with $P_2$ second degree Legendre polynomial defined as $P_2(u) = \frac{3}{2}u ^2-\frac{1}{2}$. If the nematic axis is parallel to the $\hat{\textit{\textbf{z}}}$ axis, to quantify the ordering it is necessary to study only the nematic order parameter $S$:
-\begin{equation}  
-\label{pordnem}
-S= \bigg\langle \frac{3}{2} \cos^2\theta - \frac{1}{2} \bigg\rangle; 
-\end{equation}
+where $N$ the number of particles, $\alpha\beta \in\{x,y,z\}$ and the unit vector
+${\mathbf{u}_i}_\alpha$ is the component $\alpha$ of the orientation (i.e. the symmetry axis) of particle $i$.
+If $S$ is significantly larger than $0$ particles are aligned along a given axis called the nematic director.
+
 The hexagonal order parameter $\psi_6$ is defined as:
 \begin{equation}  
 \label{esa}
 \langle \psi_6\rangle=\bigg\langle \frac{1}{N} \sum_{i=1}^N \frac{1}{n(i)} \sum_{j=1}^{n(i)}e^{6i\theta_{ij}} \bigg\rangle
 \end{equation}
-Where $n(i)$ is the number of first neighbors to the molecule $i$ on the same layer, $\theta_{ij}$ is the angle between the two molecules $i$ and $j$ with respect to an axis orthogonal to the nematic axis. Concerning the radial distribution function is defined as follows:
+Where $n(i)$ is the number of first neighbors to the molecule $i$ on the same layer, $\theta_{ij}$ is the angle between the two molecules $i$ and $j$ with respect to an axis orthogonal to the nematic axis. Finally, the radial distribution function is defined as follows:
 \begin{equation}
 	g(\textbf{r})=\frac{1}{\rho N} \biggl \langle \sum^N_{i=1} \sum_{j\neq i} \delta ( \mathbf{r} - (\textbf{r}_i-\textbf{r}_j))\biggl \rangle
 \end{equation}
-Let $\rho$ be the density of the system, $N$ the number of particles, $\mathbf{r}_i$ the position of the $i$-th particle and $ \delta(\mathbf{r})$ is the Dirac delta function.\\ 
+where $\rho$ is the density of the system,  $\mathbf{r}_i$ the position of the $i$-th particle and $ \delta(\mathbf{r})$ is the Dirac delta function.\\ 
 
-The phase change from nematic to columnar in Fig.\ref{fig:eos1} is not clear due to probably the small number of particles  ($N=180$) employed in the simulations; We used this number of particles
-to keep simulation times small, since each PHCs is replaced with $24$ semidisks, thus making the total number of PSDs to simulate equal to $4320$.
+To build the EOS shown in Fig.\ref{fig:eos1} 
+we use just $N=180$ and it is likely that finite-size effects are not negligible. Nevertheless, we remind
+that the isotropic, nematic and columnar configuration will be used as starting configuration for PSD
+simulations after HCs will be replaced with SDs.
+Since each PHCs is replaced with $24$ semidisks, this makes the total number of PSDs to simulate equal to
+$4320$, which is already a large number.
+Hence, we decided to use $N=180$ PHCs to keep simulations times small while not comprising too much 
+accuracy in the physical behavior of PSDs.
 
 \section{\label{exp}Experimental methods}
 
+{\bf \color{red} Tommaso penso che sia il caso di dare un pò di dettagli qui sugli esperimenti?}
+
 \section{\label{Results}Results}
 We now discuss how to choose the stacking and pairing energies in the simulations. Experimentally, the stacking interaction
-strength is much larger than the pairing interaction strength. 
+strength is larger than the pairing interaction strength. 
 Hence, in our model we set a pairing energy equal to half of the stacking energy.
-This decision is made because if the phase dissolution occurs even under these conditions,
-it will certainly happen with weaker pairing bonds. 
+%This decision is made because if the phase dissolution occurs even under these conditions,
+%it will certainly happen with weaker pairing bonds. 
 As initial configuration for simulating PSDs we used those corresponding to the triangles in Fig.~\ref{fig:eos1}.
 \begin{figure}[h!]
 \includegraphics[width=0.99\linewidth]{par.png}
-\caption{\label{fig:par} In purple, the nematic order parameter of the simulations that started from nematic phases at volume fraction $\phi=0.357$. In green the hexagonal order parameter of the simulations that started from columnar phases t volume fraction $\phi=0.483$. The graph shows the persistence of columnar phases, also highlighted by the graphs of the pair distribution function, and the dissolution of initially nematic phases.}
+\caption{\label{fig:par} Nematic (purple crosses) and hexagonal (green squares) order parameters
+  of PSDs at $\phi=0.357$
+}
 \end{figure}
 
 
@@ -251,10 +262,10 @@ $T^*=[0.10:0.15]$ for each starting configuration. We first note that for all te
 nematic phases are never stable and system always become isotropic, whereas the initially columnar phases are stable at
 low temperatures.  Figure~\ref{fig:par} shows the nematic and columnar order parameters for two starting
 configurations, one nematic and the other one columnar. In this figure we also show the pair  distribution functions of
-the columnar case on the plane orthogonal to the nematic axis; note the worsening of the hexagonal ordering as the
+the columnar case on the plane orthogonal to the nematic axis; note the decrease of hexagonal ordering as the
 temperature increases.
 
-
+% TODO: sono arrivato qui nella rilettura
 \subsection{Comparative Analysis of Experimental and Simulation Results}
 
 Here we compare simulations results with experimental findings on dTTP/dATP mononucleotides~\cite{Smith}.
@@ -264,13 +275,15 @@ from volume fraction $\phi$ to concentration $c$ in mg/ml can be obtained as fol
 	c=\frac{N}{V}m_N
 	\label{conc}
 \end{equation}
-where $N$ represents the number of semi-disks within the simulation box's volume $V$, and $m_N$ denotes the molecular mass of a single nucleotide, measured in Daltons ($Da$). For dTTP and dATP filaments, the molecular masses are $m_N=482.2\; Da$ and $m_N=491.2\; Da$ respectively. Since the experimental results refer to a mixture of dTTP and dATP filaments, we consider for
-the conversion the average molecular masses of the two species, i.e. $m_N=486.7\; Da$. 
-Figure~\ref{fig:wide}, shows experimental 
-findings of dATP/dTTP filaments~\cite{Smith} together with Monte Carlo simulation results of PSDs. 
-Above a concentration of 600 mg/ml simulations exhibit a phase transition from I to Col, whereas at lower concentration
-system is isotropic for all temperatures investigated. This behavior mathes the experimental results and more interestingly
-our model seems to have the right temperature dependence concerning the phase boundaries.
+where $N$ represents the number of semi-disks within the simulation box's volume $V$, and $m_N$ denotes the molecular
+mass of a single nucleotide, measured in Daltons ($Da$). For dTTP and dATP filaments, the molecular masses are
+$m_N=482.2\; Da$ and $m_N=491.2\; Da$ respectively. Since the experimental results refer to a mixture of dTTP and dATP
+filaments, we consider for the conversion the average molecular masses of the two species, i.e. $m_N=486.7\; Da$. 
+Figure~\ref{fig:wide}, shows experimental  findings of dATP/dTTP filaments~\cite{Smith} together with Monte Carlo
+simulation results of PSDs.  Above a concentration of 600 mg/ml simulations exhibit a phase transition from I to Col,
+whereas at lower concentration system is isotropic for all temperatures investigated. This behavior matches the
+experimental results and more interestingly our model seems to have the right temperature dependence concerning the
+phase boundaries.
 
 \begin{figure*}[t!] \includegraphics[width=0.7\linewidth]{finaleeng.png} \caption{\label{fig:wide}Phase diagram of
     dTTP/dATP DNA strands. The square and round symbols refer to the experimental results while the triangular symbols
@@ -304,28 +317,19 @@ thus making it hindered by the columnar phase.
 
 \section{\label{Dis}Conclusions}
 % work on this
-Our study presents a novel coarse-grained model that successfully elucidates the liquid crystal phase behaviour of
-dTTP/dATP nucleotide solutions. By employing semi-disk-like polyhedra decorated with four attractive patches to mimic
-stacking and pairing interactions, our model accurately replicates experimental observations of columnar phases without
-transitioning into nematic phases, a discrepancy previously encountered in computational simulations. Through
-meticulous adjustments and validations, including the calculation of Stacking free energy and substitution processes,
-our model demonstrates robustness in capturing the intricate behaviours of DNA nucleotides. Furthermore, our
-simulations offer insights into the stability of nematic and columnar phases under varying concentrations and
-temperatures. Notably, the stability of columnar phases at low temperatures corroborates experimental findings and
-underscores the predictive capability of our model. The comparison between simulation results and experimental data on
-dTTP/dATP filaments further validates the efficacy of our approach, highlighting concordance in phase transitions
-observed at different concentrations. \\
-
-Overall, our study not only advances our understanding of liquid crystal phase behaviour in DNA nucleotide solutions
-but also underscores the potential of computational modelling in elucidating complex molecular phenomena. Future
-research endeavours may leverage our coarse-grained model to explore additional nucleotide systems and unravel further
-intricacies underlying liquid crystal phase transitions in nucleic acid polymers.
+{\color{red} NOTA: alle conclusioni bisogna ancora lavorarci un pò}
+Our study proposes an extremely coarse-grained model for dTTP/dATP nucleotides that is able to reproduce their 
+phase behaviour. By employing SD-like polyhedra decorated with four attractive patches to mimic
+stacking and pairing interactions, our model exhibit just isotropic and columnar phases with the absence of
+a nematic phase as observed in the experiments.  Furthermore, we provide insights into the stability 
+of nematic and columnar phases under varying concentrations and temperatures in these systems. Our model
+has potential to be exploited in future studies of DNA mononucleotides and different thermodynamic conditions
+and buffer solutions...
 \appendix
 
 \section{Stacking Free Energy}\label{app:freeenergy}
 
-In this paragraph, we discuss the calculation of the stacking free energy~\cite{DeMichele12}, which is essential for
-transitioning from two-patch cylinders to four-patch cylinders. 
+Here, we discuss the calculation of the stacking free energy~\cite{DeMichele12}, which is essential for going from two-patch cylinders to four-patch cylinders. 
 
 For speeding up the equilibration process we first carried out a simulation of HCs decorated with 4 patches on thier
 bases and the we replace these cylinders with patchy semidisks. An estimate of the stacking free energy to use for
