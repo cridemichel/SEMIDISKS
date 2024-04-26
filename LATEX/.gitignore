@@ -8,5 +8,6 @@
 *.fdb_latexmk
 *.fls
 *.synctex*
+*Notes.bib
 Session.vim
 tags
