@@ -157,30 +157,34 @@ replacing HCs with PSDs for $P^*=0.55$.
 % TODO: sono arrivato qui nella rilettura
 
 \subsection{Approximation of semidisk with convex polyhedra}
-Here we discuss how to approximate a semidisk with a convex polyhedron. We seek for using the minimal number of vertices
-which provides accurate physical properties of the system (i.e. in this case semidisk).
-Determination of an optimal number of vertices for polyhedra approximation is crucial to have an accurate physical
-description while maintaining a good computational efficiency.
-With \textit{Xenocollide} time to find if two polyhedra overlap scales linearly with the number of vertices.
-Our strategy was to build the equation of state (EOS) of hard convex polyhedra which have a cylinder-like shape and to 
-compare this EOS with that of real hard cylinders.
+By using the algorithm \textit{Xenocollide} the time needed to find if two polyhedra overlap scales 
+linearly with the number of vertices.
+Hence, determination of an optimal number of vertices for the polyhedra approximation is crucial to have an 
+accurate physical description, while maintaining a good computational efficiency.
+Here, we discuss how to optimally approximate a semidisk with a convex polyhedron, i.e. 
+we seek for using the minimal number of vertices which provides accurate physical properties of the system. 
+Our strategy was to build the equation of state (EOS) of hard convex polyhedra which have a cylinder-like 
+shape and to compare this EOS with that of real hard cylinders.
 We carried out Monte Carlo simulations in the isobaric-isothermal (NPT) ensemble for
 cylinders of two different aspect ratio $X_0=L/D$, where $L$ is the length and $D$ the diameter of the cylinder. 
 We also simulated cylinder-like polyhedra with the same aspect ratio and composed of 16, 24 and 32 vertices.
-Before the production runs we equilibrated the system for at least $4$ million Monte Carlo steps and we check 
-equilibration by inspection system volume.
+Before the production runs, we equilibrated the system for at least $4$ million Monte Carlo steps and we check 
+the equilibration by inspecting system volume.
 \begin{figure}[h!] \includegraphics[width=0.95\linewidth]{cylapprox.png}
   \caption{\label{fig:cylapprox} Equation of state of cylinders with aspect ratio of $L/D=3.68794$. The equation of
-  state of the cylinders is compared with their approximation to polyhedra with 16, 24 and 32 vertices.}
+  state of the cylinders is compared with the one obtained for cylinder-like polyhedra with 16, 24 and 32 
+vertices.}
 \end{figure}
 
-Figure~\ref{fig:cylapprox} shows the resulting equations of state, where qualitative physical behavior is preserved for
-all number of vertices. It can be noted just a slight shift of EOS towards smaller volume fractions for $V= 16$ and $24$,
-while a satisfactory approximation of the EOS with that of exact cylinders is achieved with $V=32$ vertices. 
-Thus, in our numerical simulations of semidisks we will use $V=16$ vertices, being a semidisk half a cylinder. 
-Thus, in our numerical simulations of semidisks, to achieve the same level of approximation, we will use $V=16$ vertices, implementing the cut as shown in Figure \ref{fig:cutcyl}.
+Figure~\ref{fig:cylapprox} shows the resulting EOS obtained for HCs and cylinder-like polyhedra
+ with a variable number of vertices. It can be seen that the qualitative physical behavior is preserved for
+all number of vertices and that just a slight shift of EOS towards smaller volume fractions can be observed for $V= 16$ and $24$. A satisfactory approximation of the EOS of exact cylinders is achieved with $V=32$ 
+vertices. 
+%Concerning semi-disks in our numerical simulations we will use $V=18$ vertices, being a semidisk half a cylinder (see Fig.~\ref{fig:cutcyl}). 
+Hence, in our numerical simulations of SDs, to achieve the same level of approximation, we will use $V=18$ vertices as shown in Figure \ref{fig:cutcyl}.
 \begin{figure}[h!] \includegraphics[width=0.7\linewidth]{taglio.png}
-  \caption{\label{fig:cutcyl} Top view of the filament. A cylinder of $V=32$ vertices is decomposed into half-disks of $V=18$ vertices.}
+  \caption{\label{fig:cutcyl} Top view of an HC and two SDs with a mesh of vertices providing the same
+  accuracy in their physica behavior. The HC comprises a total of $V=32$ vertices (16 on the bottom and 16 on the top), while an ``equivalent'' SD is composed of $V=18$ vertices.}
 \end{figure}
 
 \subsection{EOS cylinder with 4 patches}
